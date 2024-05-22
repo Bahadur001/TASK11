@@ -1,0 +1,96 @@
+-- TASK 1
+
+
+CREATE TABLE SALES (MEHSUL_ID NUMBER, SAY NUMBER, DEYER NUMBER);
+
+INSERT INTO SALES (MEHSUL_ID, SAY, DEYER) VALUES (2, 6, 20);
+INSERT INTO SALES (MEHSUL_ID, SAY, DEYER) VALUES (10, 8, 20);
+INSERT INTO SALES (MEHSUL_ID, SAY, DEYER) VALUES (4, 6, 40);
+INSERT INTO SALES (MEHSUL_ID, SAY, DEYER) VALUES (12, 16, 10);
+INSERT INTO SALES (MEHSUL_ID, SAY, DEYER) VALUES (10, 20, 40);
+INSERT INTO SALES (MEHSUL_ID, SAY, DEYER) VALUES (4, 6, 8);
+
+SELECT MEHSUL_ID AS UMUMI_QAZANC,
+       AVG(SAY) AS UMUMI_SAY,
+       AVG(DEYER) AS UMUMI_DEYER
+FROM SALES
+GROUP BY MEHSUL_ID
+ORDER BY UMUMI_QAZANC DESC;
+
+SELECT AVG(MEHSUL_ID) AS MEHSUL_ORTALAMASI,
+       AVG(SAY) AS SAY_ORTALAMASI,
+       AVG(DEYER) AS DEYER_ORTALAMASI
+FROM SALES;
+
+-- TASK 2
+
+
+
+CREATE TABLE isciler (
+    ad VARCHAR2(100),
+    maas NUMBER,
+    departament VARCHAR2(100)
+);
+
+
+INSERT INTO isciler (ad, maas, departament) VALUES ('ELI', 700, 'satış');
+INSERT INTO isciler (ad, maas, departament) VALUES ('AYSU', 800, 'satış');
+INSERT INTO isciler (ad, maas, departament) VALUES ('NERMIN', 500, 'satış');
+INSERT INTO isciler (ad, maas, departament) VALUES ('RESAD', 600, 'satış');
+INSERT INTO isciler (ad, maas, departament) VALUES ('MEHEMMEDd', 750, 'maliyyə');
+INSERT INTO isciler (ad, maas, departament) VALUES ('NIGAR', 850, 'satış');
+
+
+SELECT ad, maas
+FROM isciler
+WHERE departament = 'satış' AND maas > 600
+ORDER BY maas DESC;
+
+-- TASK 3
+
+
+
+CREATE TABLE kitablar (
+    adi VARCHAR2(100),
+    janri VARCHAR2(100),
+    nesr_ili NUMBER
+);
+
+INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('CINAYET VE CEZA', 'EDEBIYYAT', 2016);
+INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('Inferno', 'Roman', 2013);
+INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('DERDLERIN DERDI', 'EDEBIYYAT', 2018);
+INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('1984', 'DISTOPIYA', 1949);
+INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('SIRLER', 'DEDEKTIV', 2017);
+INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('CERPELENG OGRUSU', 'ROMAN', 2019);
+
+
+SELECT adi, janri, nesr_ili
+FROM kitablar
+WHERE nesr_ili > 2015
+ORDER BY janri ASC, nesr_ili ASC;
+
+
+-- TASK 4
+CREATE TABLE filmler (
+    ad VARCHAR2(100),
+    cixis_tarixi NUMBER,
+    rating NUMBER
+);
+
+INSERT INTO filmler (ad, cixis_tarixi, rating) VALUES ('The Shawshank Redemption', 1994, 9.3);
+INSERT INTO filmler (ad, cixis_tarixi, rating) VALUES ('The Godfather', 1972, 9.2);
+INSERT INTO filmler (ad, cixis_tarixi, rating) VALUES ('The Dark Knight', 2008, 9.0);
+INSERT INTO filmler (ad, cixis_tarixi, rating) VALUES ('Pulp Fiction', 1994, 8.9);
+INSERT INTO filmler (ad, cixis_tarixi, rating) VALUES ('Schindler''s List', 1993, 8.9);
+INSERT INTO filmler (ad, cixis_tarixi, rating) VALUES ('Inception', 2010, 8.8);
+
+
+SELECT ad, cixis_tarixi, rating
+FROM filmler
+WHERE cixis_tarixi < 2000
+ORDER BY cixis_tarixi ASC;
+
+SELECT ad, cixis_tarixi, rating
+FROM filmler
+WHERE rating > 7
+ORDER BY rating DESC;
